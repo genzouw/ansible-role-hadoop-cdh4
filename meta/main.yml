@@ -1,0 +1,18 @@
+---
+dependencies:
+  - role: genzouw.centos-common-ja
+  - role: genzouw.jdk7
+
+galaxy_info:
+  author: genzouw
+  description: 'Scrit to setup Hadoop.'
+  license: "license (BSD, MIT)"
+  min_ansible_version: 1.6
+  platforms:
+  - name: EL
+    versions:
+    - all
+  categories:
+    - networking
+    - system
+    - web

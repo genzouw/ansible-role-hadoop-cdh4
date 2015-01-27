@@ -1,0 +1,24 @@
+---
+
+- shell: wget http://archive.cloudera.com/cdh4/redhat/6/x86_64/cdh/cloudera-cdh4.repo
+  args:
+    chdir: /etc/yum.repos.d/
+
+- yum: pkg=* state=present
+
+- name: Intall yum packages
+  yum: pkg={{ item }} state=present
+  with_items:
+    - hadoop-yarn-resourcemanager
+    - hadoop-hdfs-namenode
+    - hadoop-hdfs-secondarynamenode
+    - hadoop-yarn-nodemanager
+    - hadoop-hdfs-datanode
+    - hadoop-mapreduce
+    - hadoop-mapreduce-historyserver
+    - hadoop-yarn-proxyserver
+    - hadoop-client
+    - hive
+  ignore_errors: yes
+
+- file: path=/user/hive/warehouse state=directory mode=777
